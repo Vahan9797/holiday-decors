@@ -1,0 +1,22 @@
+@import "antd/dist/antd.css";
+
+.header-container {
+  display: flex;
+  align-items: center;
+}
+
+.site-layout-content {
+  height: 80vh;
+  text-align: center;
+
+  &.background-christmas {
+    background-image: url(../../../../public/christmas.jpg);
+    background-size: cover;
+    opacity: 0.7;
+    width: 100%;
+
+    h1 {
+      color: rgba(255, 255, 255, 1);
+    }
+  }
+}
