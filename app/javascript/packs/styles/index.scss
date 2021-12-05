@@ -1,22 +1,191 @@
 @import "antd/dist/antd.css";
 
+html {
+  scroll-behavior: smooth;
+}
+
 .header-container {
   display: flex;
   align-items: center;
+  z-index: 2;
+  ul {
+    height: 50px !important;
+  }
+}
+
+.background-christmas {
+  background-image: url(../../../../public/wallpaper.jpeg);
+  background-size: cover;
+  width: 100%;
+
+  h1 {
+    color: #fff;
+    font-size: 5vw;
+    padding-top: 60px;
+    margin-bottom: 10px;
+  }
 }
 
 .site-layout-content {
-  height: 80vh;
+  z-index: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+
+  .gallery-container {
+    width: 80%;
+    position: relative;
+    height: 100vh;
+    z-index: 1;
+    box-sizing: content-box;
+    padding: 20px 20px 30px 30px;
+    border-radius: 20px;
+    background: rgba(195, 196, 198, .3);
+
+    .gallery-title {
+      position: absolute;
+      top: 15px;
+      left: 0;
+      right: 0;
+      width: 100%;
+      font-size: 3vw;
+      line-height: 1.2;
+      text-align: center;
+      z-index: 2;
+    } 
+
+    .images-container {
+      width: 90%;
+      position: absolute;
+      top: 75px;
+      left: 20px;
+      right: 20px;
+      bottom: 20px;
+      overflow-y: scroll;
+      margin: 0 auto;
+    }
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.find-us {
+  padding-top: 70px;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+
+  .contact-info-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 2vw;
+    width: 40vw;
+    height: 50vh;
+  }
+
+  .google-maps-container {
+    position: relative;
+    width: 50vw;
+    height: 50vh;
+    margin: 0 35px 65px 0;
+
+    .google-maps-spinner {
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      width: 200px;
+    }
+  }
+}
+
+
+.glow, .blue-glow, .green-glow {
+  color: #fff;
   text-align: center;
 
-  &.background-christmas {
-    background-image: url(../../../../public/christmas.jpg);
-    background-size: cover;
-    opacity: 0.7;
-    width: 100%;
+  &.glow {
+    -webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
+  }
 
-    h1 {
-      color: rgba(255, 255, 255, 1);
+  &.blue-glow {
+    -webkit-animation: blue-glow 1s ease-in-out infinite alternate;
+    -moz-animation: blue-glow 1s ease-in-out infinite alternate;
+    animation: blue-glow 1s ease-in-out infinite alternate;  
+  }
+
+  &.green-glow {
+    -webkit-animation: green-glow 1s ease-in-out infinite alternate;
+    -moz-animation: green-glow 1s ease-in-out infinite alternate;
+    animation: green-glow 1s ease-in-out infinite alternate;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .find-us {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .contact-info-container {
+      font-size: 5vw;
+      width: 70vw;
     }
+
+    .google-maps-container {
+      width: 80vw;
+      height: 70vh;
+    }
+  }
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  }
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+  }
+}
+
+@keyframes blue-glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #003460, 0 0 40px #003460, 0 0 50px #003460, 0 0 60px #003460, 0 0 70px #003460;
+  }
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #1890ff, 0 0 40px #1890ff, 0 0 50px #1890ff, 0 0 60px #1890ff, 0 0 70px #1890ff, 0 0 80px #1890ff;
+  }
+}
+
+@keyframes green-glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #2b932e, 0 0 40px #2b932e, 0 0 50px #2b932e, 0 0 60px #2b932e, 0 0 70px #2b932e;
+  }
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #36da45, 0 0 40px #36da45, 0 0 50px #36da45, 0 0 60px #36da45, 0 0 70px #36da45, 0 0 80px #36da45;
+  }
+}
+
+.footer-container {
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 2;
+
+  footer {
+    background-color: #ff7878;
+    background-image: linear-gradient(315deg, #ff7878 0%, #f55 74%);
+    color: aliceblue;
   }
 }
