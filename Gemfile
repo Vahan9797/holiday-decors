@@ -20,6 +20,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bcrypt'
 gem 'webpacker'
 gem 'pathname'
+gem 'foreman'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
