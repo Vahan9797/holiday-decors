@@ -6,20 +6,20 @@ class SuggestionsController < ApplicationController
   end
 
   def show
-    respond_to { |format| format.json { suggestion: Suggestion.find(params.require(:id)) } }, status: :ok
+    render json: { suggestion: Suggestion.find(params.require(:id)) }, status: :ok
   end
-  
+
   def create
-    respond_to { |format| format.json { suggestion: Suggestion.create!(create_params) } }, status: :ok
+    render json: { suggestion: Suggestion.create!(create_params) }, status: :ok
   rescue ActiveRecord::RecordInvalid
-    respond_to { |format| format.json { message: 'Invalid parameters for create function.' } }, status: :bad_request
+    render json: { message: 'Invalid parameters for create function.' }, status: :bad_request
   end
 
   def destroy
     Suggestion.destroy!(params.require(:id))
-    respond_to { |format| format.json { message: 'Suggestion successfully deleted.' } }, status: :ok
+    render json: { message: 'Suggestion successfully deleted.' }, status: :ok
   rescue ActiveRecord::RecordNotDestroyed
-    respond_to { |format| format.json { message: 'Failed to delete given suggestion.' } }, status: :not_found
+    render json: { message: 'Failed to delete given suggestion.' }, status: :not_found
   end
 
   private

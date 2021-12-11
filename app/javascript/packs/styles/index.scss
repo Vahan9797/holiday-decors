@@ -1,5 +1,16 @@
 @import "antd/dist/antd.css";
 
+$base-color: rgba(195, 196, 198, .8);
+$base-color-transparent: rgba(195, 196, 198, .3);
+
+@font-face {
+  font-family: 'anticon';
+  src: url('https://at.alicdn.com/t/font_zck90zmlh7hf47vi.eot');
+  /* IE9*/
+  src: url('https://at.alicdn.com/t/font_zck90zmlh7hf47vi.eot?#iefix') format('embedded-opentype'), /* chrome、firefox */ url('https://at.alicdn.com/t/font_zck90zmlh7hf47vi.woff') format('woff'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/ url('https://at.alicdn.com/t/font_zck90zmlh7hf47vi.ttf') format('truetype'), /* iOS 4.1- */ url('https://at.alicdn.com/t/font_zck90zmlh7hf47vi.svg#iconfont') format('svg');
+}
+
+
 html {
   scroll-behavior: smooth;
 }
@@ -16,7 +27,8 @@ html {
 .background-christmas {
   background-image: url(../../../../public/wallpaper.jpeg);
   background-size: cover;
-  width: 100%;
+  background-attachment: fixed;
+  background-position: left top;
 
   h1 {
     color: #fff;
@@ -38,12 +50,12 @@ html {
   .gallery-container {
     width: 80%;
     position: relative;
-    height: 100vh;
+    height: 55vw;
     z-index: 1;
     box-sizing: content-box;
     padding: 20px 20px 30px 30px;
     border-radius: 20px;
-    background: rgba(195, 196, 198, .3);
+    background: $base-color-transparent;
 
     .gallery-title {
       position: absolute;
@@ -60,12 +72,39 @@ html {
     .images-container {
       width: 90%;
       position: absolute;
+      z-index: 1;
       top: 10vh;
       left: 20px;
       right: 20px;
       bottom: 20px;
       overflow-y: scroll;
       margin: 0 auto;
+
+      .ant-carousel .slick-prev,
+      .ant-carousel .slick-next,
+      .ant-carousel .slick-prev:hover,
+      .ant-carousel .slick-next:hover,
+      .ant-carousel .slick-prev:focus,
+      .ant-carousel .slick-next:focus {
+        font-size: inherit;
+        color: $base-color !important;
+      }
+      
+      .ant-carousel .slick-prev::before {
+        color: $base-color !important;
+      }
+      
+      .slick-arrow.slick-prev {
+        font-size: 40px !important;
+      }
+      
+      .ant-carousel .slick-next::before {
+        color: $base-color !important;
+      }
+      
+      .slick-arrow.slick-next {
+        font-size: 40px !important;
+      }
     }
   }
 
