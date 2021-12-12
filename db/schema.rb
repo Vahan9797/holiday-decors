@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2021_12_12_091727) do
   create_table "images", force: :cascade do |t|
     t.string "name"
     t.string "path"
+    t.boolean "is_local", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

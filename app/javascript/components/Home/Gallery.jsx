@@ -1,7 +1,7 @@
 import React, { useReducer, useEffect } from "react";
 import { Image, Carousel, Spin } from 'antd';
 import { CaretLeftOutlined, CaretRightOutlined } from '@ant-design/icons';
-import brokenImg from '../../../../public/broken-img.png';
+import brokenImg from '../../../../public/broken-image.png';
 import axios from 'axios';
 import { SERVER_API_ENDPOINT } from '../../constants/variables';
 
@@ -24,7 +24,7 @@ function Gallery() {
     axios.get(SERVER_API_ENDPOINT('images?page=1')).then(({ data }) => {
       console.log(data);
       data?.images && dispatch({ type: 'isLoaded', images: data.images });
-    }).catch(err => console.error(err)) 
+    }).catch(err => console.error(err))
   }, [])
 
   return (
@@ -40,7 +40,7 @@ function Gallery() {
             prevArrow={<CaretLeftOutlined />}
             nextArrow={<CaretRightOutlined />}
             >
-              { gallery?.images?.map(({ path }, idx) => <Image key={idx} src={path} fallback={brokenImg} style={{ width: "95%", height: "100%" }}></Image>) }
+              { gallery?.images?.map(({ path }, idx) => <Image key={idx} src={path} fallback={'Not Found.'} placeholder={true} style={{ width: "95%", height: "95%" }}></Image>) }
           </Carousel>
         )}
       </div>
