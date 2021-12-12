@@ -1,6 +1,7 @@
 import { Button, Form, Input, InputNumber, Modal } from "antd";
 import React, { createRef, useContext, useState, useEffect } from "react";
-import { SendMessageContext } from '../contexts/SendMessageContext';
+import { SendMessageContext } from '../../contexts/SendMessageContext';
+import { UserOutlined } from "@ant-design/icons";
 import {
   VALID_EMAIL_REGEX,
   VALID_TEL_NUMBER_REGEX,
@@ -8,7 +9,7 @@ import {
   EMAIL_FIELD_MSG,
   MOBILE_NUMBER_FIELD_MSG,
   MIN_MAX_NAME_FIELD_MSG
-} from '../constants/variables';
+} from '../../constants/variables';
 import axios from 'axios';
 
 const SendMessageModal = (props) => {

@@ -1,7 +1,7 @@
 import React from "react";
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 import { Spin } from "antd";
-import { GOOGLE_API_KEY } from '../constants/variables';
+import { GOOGLE_API_KEY } from '../../constants/variables';
 
 const LoadingContainer = () => {
   return (

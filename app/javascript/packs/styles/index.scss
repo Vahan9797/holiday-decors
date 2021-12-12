@@ -2,6 +2,8 @@
 
 $base-color: rgba(195, 196, 198, .8);
 $base-color-transparent: rgba(195, 196, 198, .3);
+$second-color: rgba(21, 15, 6, .8);
+$second-color-transparent: rgba(21, 15, 6, .3);
 
 @font-face {
   font-family: 'anticon';
@@ -51,6 +53,7 @@ html {
     width: 80%;
     position: relative;
     height: 55vw;
+    overflow: hidden;
     z-index: 1;
     box-sizing: content-box;
     padding: 20px 20px 30px 30px;
@@ -73,11 +76,10 @@ html {
       width: 90%;
       position: absolute;
       z-index: 1;
-      top: 10vh;
+      top: 8vw;
       left: 20px;
       right: 20px;
       bottom: 20px;
-      overflow-y: scroll;
       margin: 0 auto;
 
       .ant-carousel .slick-prev,
@@ -87,23 +89,28 @@ html {
       .ant-carousel .slick-prev:focus,
       .ant-carousel .slick-next:focus {
         font-size: inherit;
-        color: $base-color !important;
+        z-index: 10;
+        height: 100%;
+        top: calc(50% - 5vw);
+        width: 50px;
+        font-size: 10vw !important;
+        color: $second-color-transparent !important;
       }
       
       .ant-carousel .slick-prev::before {
-        color: $base-color !important;
+        color: $second-color !important;
       }
       
       .slick-arrow.slick-prev {
-        font-size: 40px !important;
+        left: 0;
       }
       
       .ant-carousel .slick-next::before {
-        color: $base-color !important;
+        color: $second-color !important;
       }
       
       .slick-arrow.slick-next {
-        font-size: 40px !important;
+        right: 5vw;
       }
     }
   }
@@ -114,7 +121,7 @@ html {
 }
 
 .find-us {
-  padding-top: 70px;
+  padding-top: 40px;
   display: flex;
   justify-content: space-around;
   align-items: flex-start;
@@ -124,7 +131,7 @@ html {
     align-items: center;
     justify-content: center;
     text-align: center;
-    font-size: 2vw;
+    font-size: 3vw;
     width: 40vw;
     height: 50vh;
   }
@@ -172,11 +179,13 @@ html {
 @media only screen and (max-width: 768px) {
   .find-us {
     flex-direction: column;
+    padding: 0;
     justify-content: center;
     align-items: center;
 
     .contact-info-container {
-      font-size: 5vw;
+      font-size: 3vw;
+      height: 20vh;
       width: 70vw;
     }
 

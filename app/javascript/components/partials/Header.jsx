@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Layout, Menu, Image } from "antd";
-import logo from '../../../public/logo.ico';
-import { SendMessageContext } from '../contexts/SendMessageContext';
+import logo from '../../../../public/logo.ico';
+import { SendMessageContext } from '../../contexts/SendMessageContext';
 const { Header } = Layout;
 
 export default () => {

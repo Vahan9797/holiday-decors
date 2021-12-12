@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Image.create!(
+  name: 'Christmas Test',
+  path: 'public/christmas.jpg'
+)
+
+Image.create!(
+  name: 'Wallpaper Test',
+  path: 'public/wallpaper.jpeg'
+)

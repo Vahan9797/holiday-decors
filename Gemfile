@@ -21,6 +21,10 @@ gem 'bcrypt'
 gem 'webpacker'
 gem 'pathname'
 gem 'foreman'
+gem 'devise'
+gem 'devise-jwt'
+gem 'rack-cors'
+gem 'jsonapi-rails'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

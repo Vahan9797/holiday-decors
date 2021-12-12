@@ -11,15 +11,11 @@ class SuggestionsController < ApplicationController
 
   def create
     render json: { suggestion: Suggestion.create!(create_params) }, status: :ok
-  rescue ActiveRecord::RecordInvalid
-    render json: { message: 'Invalid parameters for create function.' }, status: :bad_request
   end
 
   def destroy
     Suggestion.destroy!(params.require(:id))
     render json: { message: 'Suggestion successfully deleted.' }, status: :ok
-  rescue ActiveRecord::RecordNotDestroyed
-    render json: { message: 'Failed to delete given suggestion.' }, status: :not_found
   end
 
   private
