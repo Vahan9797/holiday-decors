@@ -60,6 +60,20 @@ html {
     border-radius: 20px;
     background: $base-color-transparent;
 
+    .ant-spin {
+      position: absolute;
+      top: calc(50% - 4vw);
+
+      .ant-spin-dot-spin {
+        font-size: 6vw;
+
+        .ant-spin-dot-item {
+          width: 3vw;
+          height: 3vw;
+        }
+      }
+    }
+
     .gallery-title {
       position: absolute;
       top: 15px;
@@ -131,7 +145,7 @@ html {
     align-items: center;
     justify-content: center;
     text-align: center;
-    font-size: 3vw;
+    font-size: 2vw;
     width: 40vw;
     height: 50vh;
   }

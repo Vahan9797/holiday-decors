@@ -1,7 +1,7 @@
 import React, { useReducer, useEffect } from "react";
 import { Image, Carousel, Spin } from 'antd';
 import { CaretLeftOutlined, CaretRightOutlined } from '@ant-design/icons';
-//import img from '../../../../public/christmas.jpg';
+import brokenImg from '../../../../public/broken-img.png';
 import axios from 'axios';
 import { SERVER_API_ENDPOINT } from '../../constants/variables';
 
@@ -21,25 +21,28 @@ function Gallery() {
 
   useEffect(() => {
     dispatch({ type: 'isLoading' })
-    axios.get(SERVER_API_ENDPOINT('images?page=1')).then(response => {
-      console.log(response);
-      response?.images && dispatch({ type: 'isLoaded', images: response.images })
-    })
+    axios.get(SERVER_API_ENDPOINT('images?page=1')).then(({ data }) => {
+      console.log(data);
+      data?.images && dispatch({ type: 'isLoaded', images: data.images });
+    }).catch(err => console.error(err)) 
   }, [])
 
   return (
     <div className="gallery-container">
     <div className="gallery-title blue-glow">Image Gallery Of Our Works</div>
       <div className="images-container">
-        {gallery.loading && <Spin size="large" />}
-        {!gallery.loading && <Carousel
-          autoplay={true}
-          arrows
-          prevArrow={<CaretLeftOutlined />}
-          nextArrow={<CaretRightOutlined />}
-          >
-            { gallery?.images?.map(() => <Image src={img} placeholder={true} style={{ width: "95%", height: "100%" }}></Image>) }
-        </Carousel>}
+        {gallery.loading ? (
+          <Spin />
+        ) : (
+          <Carousel
+            autoplay={true}
+            arrows
+            prevArrow={<CaretLeftOutlined />}
+            nextArrow={<CaretRightOutlined />}
+            >
+              { gallery?.images?.map(({ path }, idx) => <Image key={idx} src={path} fallback={brokenImg} style={{ width: "95%", height: "100%" }}></Image>) }
+          </Carousel>
+        )}
       </div>
     </div>
   )

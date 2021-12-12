@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   namespace :admin, defaults: { format: :json } do
-    resources :gallery
     resources :suggestions, only: %i[index show destroy]
     resources :images, except: :update
   end
@@ -20,7 +19,6 @@ Rails.application.routes.draw do
     }
 
   root to: 'application#index'
-  resources :gallery, only: :index
   resources :suggestions, only: :create
   resources :images, only: :index
 end
