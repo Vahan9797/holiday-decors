@@ -4,15 +4,14 @@ import Home from "../components/Home/Home";
 import AdminPanel from '../components/admin/AdminPanel';
 import Login from '../components/admin/Login';
 
+const loggedInUser = false;
+
 export default (
   <Router>
     <Switch>
       <Route exact path="/" component={Home} />
       <Route exact path="/admin" component={AdminPanel} />
-      <Route exact path='/login'>
-        { loggedInUser ? <Redirect to="/admin" /> : <Login />}
-      </Route>
-      <Route exact path="/signup">
+      <Route exact path="/login">
         { loggedInUser ? <Redirect to="/admin" /> : <Login />}
       </Route>
     </Switch>

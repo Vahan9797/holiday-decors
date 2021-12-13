@@ -1,7 +1,7 @@
 import { Layout } from "antd";
 import React from "react";
-import Gallery from "./Gallery";
-import FindUs from './FindUs';
+import Gallery from "../Home/Gallery";
+import FindUs from '../Home/FindUs';
 
 const { Header, Content, Footer } = Layout;
 

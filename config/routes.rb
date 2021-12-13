@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     }
 
   root to: 'application#index'
+  get '/login', to: 'application#index'
+
   resources :suggestions, only: :create
   resources :images, only: :index
 end
