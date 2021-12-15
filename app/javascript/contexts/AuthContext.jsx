@@ -1,5 +1,4 @@
 import React, { useEffect, useMemo, createContext, useReducer } from 'react';
-import { SERVER_API_ENDPOINT } from '../constants/variables';
 import axios from 'axios';
 
 const AuthContext = createContext([[], () => {}]);
@@ -20,7 +19,7 @@ function AuthContextProvider(props) {
 
   // Setting up request listener to append auth token header for every request if admin isLoggedIn
   axios.interceptors.request.use(request => {
-    isApiUrl = request.url.startsWith(SERVER_API_ENDPOINT(''));
+    isApiUrl = request.url.startsWith(process.env.SERVER_API_ENDPOINT);
 
     if (admin.isLoggedIn && isApiUrl) {
       request.headers.common.Authorization = `Bearer ${admin.token}`;

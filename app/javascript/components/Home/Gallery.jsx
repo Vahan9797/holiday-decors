@@ -3,7 +3,6 @@ import { Image, Carousel, Spin } from 'antd';
 import { CaretLeftOutlined, CaretRightOutlined } from '@ant-design/icons';
 import brokenImg from '../../../../public/broken-image.png';
 import axios from 'axios';
-import { SERVER_API_ENDPOINT } from '../../constants/variables';
 
 const imageReducer = (state, action) => {
   switch (action.type) {
@@ -21,7 +20,7 @@ function Gallery() {
 
   useEffect(() => {
     dispatch({ type: 'isLoading' })
-    axios.get(SERVER_API_ENDPOINT('images?page=1')).then(({ data }) => {
+    axios.get('images?page=1').then(({ data }) => {
       console.log(data);
       data?.images && dispatch({ type: 'isLoaded', images: data.images });
     }).catch(err => console.error(err))

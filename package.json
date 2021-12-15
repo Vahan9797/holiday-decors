@@ -6,6 +6,7 @@
     "antd": "^4.17.2",
     "axios": "^0.24.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
+    "dotenv": "^10.0.0",
     "google-maps-react": "^2.0.6",
     "node-sass": "^6.0.1",
     "prop-types": "^15.7.2",

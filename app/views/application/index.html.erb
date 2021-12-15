@@ -6,6 +6,11 @@
     <%= favicon_link_tag("logo.ico") %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <% if ENV['RAILS_ENV'] == 'production' %>
+      <%= javascript_pack_tag 'environments/production' %>
+    <% else %>
+      <%= javascript_pack_tag 'environments/development' %>
+    <% end %>
     <%= javascript_pack_tag 'index', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'styles/index', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>

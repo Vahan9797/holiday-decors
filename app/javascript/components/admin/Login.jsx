@@ -2,7 +2,7 @@ import React, { useContext, createRef } from 'react';
 import { Form, Avatar, Input, Button } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import { AuthContext } from '../../contexts/AuthContext';
-import { REQUIRED_FIELD_MSG, MIN_MAX_NAME_FIELD_MSG, SERVER_API_ENDPOINT } from '../../constants/variables';
+import { REQUIRED_FIELD_MSG, MIN_MAX_NAME_FIELD_MSG } from '../../constants/variables';
 import axios from 'axios';
 
 const Login = () => {
@@ -11,7 +11,7 @@ const Login = () => {
 
   const onFinish = ({ username, password }) => {
     dispatch({ type: 'isLoggingIn' });
-    axios.post(SERVER_API_ENDPOINT('admin/login'), { username, password })
+    axios.post('admin/login', { username, password })
       .then(({ data }) => {
         dispatch({ type: 'isLoggedIn', token: data.token });
       })
