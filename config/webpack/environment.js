@@ -1,4 +1,22 @@
 const { environment } = require('@rails/webpacker')
+const { EnvironmentPlugin } = require('webpack')
+const dotenv = require('dotenv')
+
+const dotEnvFiles = [
+  `.env.local.${process.env.NODE_ENV}`,
+  '.env.local',
+  `.env.${process.env.NODE_ENV}`,
+  '.env'
+]
+
+dotEnvFiles.forEach(dotEnvFile => {
+  dotenv.config({ path: dotEnvFile, silent: true })
+})
+
+environment.plugins.insert(
+  "Environment",
+  new EnvironmentPlugin(process.env)
+)
 
 // Get the actual sass-loader config
 const sassLoader = environment.loaders.get('sass')
@@ -9,15 +27,5 @@ const sassLoaderConfig = sassLoader.use.find(function(element) {
 // Use Dart-implementation of Sass (default is node-sass)
 const options = sassLoaderConfig.options
 options.implementation = require('sass')
-
-// SVG loading
-const fileLoader = environment.loaders.get('file')
-// exclude 'svg' from file loader for @zendeskgarden/svg-icons
-// see https://github.com/rails/webpacker/issues/918#issuecomment-706981769
-//fileLoader.test = /\.(jpg|jpeg|png|svg|gif|eot|otf|ttf|woff|woff2)$/i;
-environment.loaders.prepend('svg', {
-  test: /\.svg$/,
-  loader: 'url-loader'
-})
 
 module.exports = environment
