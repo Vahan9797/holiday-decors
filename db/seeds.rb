@@ -8,10 +8,10 @@
 
 Image.create!(
   name: 'Christmas Test',
-  path: 'public/christmas.jpg'
+  path: 'christmas.jpg'
 )
 
 Image.create!(
   name: 'Wallpaper Test',
-  path: 'public/wallpaper.jpeg'
+  path: 'wallpaper.jpeg'
 )
