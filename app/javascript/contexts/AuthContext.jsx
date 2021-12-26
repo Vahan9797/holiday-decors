@@ -1,4 +1,5 @@
-import React, { useEffect, useMemo, createContext, useReducer } from 'react';
+import React, { createContext, useReducer } from 'react';
+import { useHistory } from 'react-router';
 import axios from 'axios';
 
 const AuthContext = createContext([[], () => {}]);
@@ -16,6 +17,7 @@ const loggedInReducer = (state, action) => {
 
 function AuthContextProvider(props) {
   const [admin, dispatch] = useReducer(loggedInReducer, { token: null, loading: false, isLoggedIn: false });
+  const history = useHistory();
 
   // Setting up request listener to append auth token header for every request if admin isLoggedIn
   axios.interceptors.request.use(request => {
@@ -26,12 +28,12 @@ function AuthContextProvider(props) {
     }
   });
 
-  // Setting up response listener to update auth token when it expires
-  axios.interceptors.response(response => {
+  // Setting up response listener to redirect to login page when token expires
+  axios.interceptors.response.use(response => {
     return response;
   }, error => {
     if (error.response.status === 401) {
-      // TODO: update token by making API call
+      history.push('/admin/login');
     }
   });
 
